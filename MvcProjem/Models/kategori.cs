@@ -17,9 +17,7 @@ namespace MvcProjem
         }
         public int id { get; set; }
         public string kategoriadi { get; set; }
-        public string urunsayisi { get; set; }
         public string parentid { get; set; }
-        public string kategoriAciklama { get; set; }
         public virtual ICollection<urun> urunler { get; set; }
         public virtual ICollection<ozellik> ozellik { get; set; }
     }

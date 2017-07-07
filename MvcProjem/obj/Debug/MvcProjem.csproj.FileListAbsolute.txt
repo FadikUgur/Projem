@@ -22,3 +22,27 @@ C:\Users\Satellite\Documents\Visual Studio 2012\Projects\MvcProjem\MvcProjem\bin
 C:\Users\Satellite\Documents\Visual Studio 2012\Projects\MvcProjem\MvcProjem\bin\EntityFramework.SqlServer.dll
 C:\Users\Satellite\Documents\Visual Studio 2012\Projects\MvcProjem\MvcProjem\bin\EntityFramework.xml
 C:\Users\Satellite\Documents\Visual Studio 2012\Projects\MvcProjem\MvcProjem\bin\EntityFramework.SqlServer.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\MvcProjem.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\MvcProjem.pdb
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\EntityFramework.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\EntityFramework.SqlServer.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\Newtonsoft.Json.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.Helpers.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.Mvc.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.Razor.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.Razor.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\EntityFramework.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\EntityFramework.SqlServer.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\Newtonsoft.Json.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.Helpers.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.Mvc.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.Razor.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.Razor.xml
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\obj\Debug\MvcProjem.csprojResolveAssemblyReference.cache
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\obj\Debug\MvcProjem.dll
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\obj\Debug\MvcProjem.pdb
