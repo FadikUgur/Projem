@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Kategori";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <!-- /.col-lg-4 -->
+        <form action="/Admin/Add" method="get">
+            <div class="col-lg-4">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body">
+                        <label>Kategori Adı</label>
+                        <input type="text" class="form-control" id="txtKategoriAdi">
+                        <div class="form-group">
+                            <label>Üst Kategori Seçiniz</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+        </div>
+        <!-- /.col-lg-4 -->
+    </div>
+</div>
+<!-- /.container-fluid -->

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MvcProjemModelStoreContainer" CdmEntityContainer="MvcProjemEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="MvcProjemModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="MvcProjemModel.admins">
+        <MappingFragment StoreEntitySet="admins">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="adi" ColumnName="adi" />
+          <ScalarProperty Name="soyadi" ColumnName="soyadi" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="Tc" ColumnName="Tc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="iletisims">
+      <EntityTypeMapping TypeName="MvcProjemModel.iletisims">
+        <MappingFragment StoreEntitySet="iletisims">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="uyeid" ColumnName="uyeid" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="ulke" ColumnName="ulke" />
+          <ScalarProperty Name="sehir" ColumnName="sehir" />
+          <ScalarProperty Name="ilce" ColumnName="ilce" />
+          <ScalarProperty Name="iletisimler_id" ColumnName="iletisimler_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kategoris">
+      <EntityTypeMapping TypeName="MvcProjemModel.kategoris">
+        <MappingFragment StoreEntitySet="kategoris">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kategoriadi" ColumnName="kategoriadi" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="urunsayisi" ColumnName="urunsayisi" />
+          <ScalarProperty Name="kategoriAciklama" ColumnName="kategoriAciklama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ozelliks">
+      <EntityTypeMapping TypeName="MvcProjemModel.ozelliks">
+        <MappingFragment StoreEntitySet="ozelliks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="kategoriid" ColumnName="kategoriid" />
+          <ScalarProperty Name="urunozellik_id" ColumnName="urunozellik_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resimlers">
+      <EntityTypeMapping TypeName="MvcProjemModel.resimlers">
+        <MappingFragment StoreEntitySet="resimlers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="urnid" ColumnName="urnid" />
+          <ScalarProperty Name="iletisimler_id" ColumnName="iletisimler_id" />
+          <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="urunozelliks">
+      <EntityTypeMapping TypeName="MvcProjemModel.urunozelliks">
+        <MappingFragment StoreEntitySet="urunozelliks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ozellikid" ColumnName="ozellikid" />
+          <ScalarProperty Name="degeri" ColumnName="degeri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uruns">
+      <EntityTypeMapping TypeName="MvcProjemModel.uruns">
+        <MappingFragment StoreEntitySet="uruns">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="urunadi" ColumnName="urunadi" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="kategoriid" ColumnName="kategoriid" />
+          <ScalarProperty Name="urunozellik_id" ColumnName="urunozellik_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="yetkis">
+      <EntityTypeMapping TypeName="MvcProjemModel.yetkis">
+        <MappingFragment StoreEntitySet="yetkis">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="yetkituru" ColumnName="yetkituru" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="yorumlars">
+      <EntityTypeMapping TypeName="MvcProjemModel.yorumlars">
+        <MappingFragment StoreEntitySet="yorumlars">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="yorum" ColumnName="yorum" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="urunid" ColumnName="urunid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

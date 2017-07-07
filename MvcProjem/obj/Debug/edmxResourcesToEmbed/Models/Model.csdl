@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MvcProjemModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MvcProjemEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="MvcProjemModel.C__MigrationHistory" />
+    <EntitySet Name="admins" EntityType="MvcProjemModel.admins" />
+    <EntitySet Name="iletisims" EntityType="MvcProjemModel.iletisims" />
+    <EntitySet Name="kategoris" EntityType="MvcProjemModel.kategoris" />
+    <EntitySet Name="ozelliks" EntityType="MvcProjemModel.ozelliks" />
+    <EntitySet Name="resimlers" EntityType="MvcProjemModel.resimlers" />
+    <EntitySet Name="urunozelliks" EntityType="MvcProjemModel.urunozelliks" />
+    <EntitySet Name="uruns" EntityType="MvcProjemModel.uruns" />
+    <EntitySet Name="yetkis" EntityType="MvcProjemModel.yetkis" />
+    <EntitySet Name="yorumlars" EntityType="MvcProjemModel.yorumlars" />
+    <AssociationSet Name="FK_dbo_iletisims_dbo_iletisims_iletisimler_id" Association="MvcProjemModel.FK_dbo_iletisims_dbo_iletisims_iletisimler_id">
+      <End Role="iletisims" EntitySet="iletisims" />
+      <End Role="iletisims1" EntitySet="iletisims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_resimlers_dbo_iletisims_iletisimler_id" Association="MvcProjemModel.FK_dbo_resimlers_dbo_iletisims_iletisimler_id">
+      <End Role="iletisims" EntitySet="iletisims" />
+      <End Role="resimlers" EntitySet="resimlers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ozelliks_dbo_kategoris_kategoriid" Association="MvcProjemModel.FK_dbo_ozelliks_dbo_kategoris_kategoriid">
+      <End Role="kategoris" EntitySet="kategoris" />
+      <End Role="ozelliks" EntitySet="ozelliks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_uruns_dbo_kategoris_kategoriid" Association="MvcProjemModel.FK_dbo_uruns_dbo_kategoris_kategoriid">
+      <End Role="kategoris" EntitySet="kategoris" />
+      <End Role="uruns" EntitySet="uruns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ozelliks_dbo_urunozelliks_urunozellik_id" Association="MvcProjemModel.FK_dbo_ozelliks_dbo_urunozelliks_urunozellik_id">
+      <End Role="urunozelliks" EntitySet="urunozelliks" />
+      <End Role="ozelliks" EntitySet="ozelliks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_resimlers_dbo_uruns_urun_id" Association="MvcProjemModel.FK_dbo_resimlers_dbo_uruns_urun_id">
+      <End Role="uruns" EntitySet="uruns" />
+      <End Role="resimlers" EntitySet="resimlers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_uruns_dbo_urunozelliks_urunozellik_id" Association="MvcProjemModel.FK_dbo_uruns_dbo_urunozelliks_urunozellik_id">
+      <End Role="urunozelliks" EntitySet="urunozelliks" />
+      <End Role="uruns" EntitySet="uruns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_yorumlars_dbo_uruns_urunid" Association="MvcProjemModel.FK_dbo_yorumlars_dbo_uruns_urunid">
+      <End Role="uruns" EntitySet="uruns" />
+      <End Role="yorumlars" EntitySet="yorumlars" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="adi" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="soyadi" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="mail" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="sifre" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="adres" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="tel" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Tc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="iletisims">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="uyeid" Type="Int32" />
+    <Property Name="adres" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="tel" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ulke" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="sehir" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ilce" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="iletisimler_id" Type="Int32" />
+    <NavigationProperty Name="iletisims1" Relationship="MvcProjemModel.FK_dbo_iletisims_dbo_iletisims_iletisimler_id" FromRole="iletisims" ToRole="iletisims1" />
+    <NavigationProperty Name="iletisims2" Relationship="MvcProjemModel.FK_dbo_iletisims_dbo_iletisims_iletisimler_id" FromRole="iletisims1" ToRole="iletisims" />
+    <NavigationProperty Name="resimlers" Relationship="MvcProjemModel.FK_dbo_resimlers_dbo_iletisims_iletisimler_id" FromRole="iletisims" ToRole="resimlers" />
+  </EntityType>
+  <EntityType Name="kategoris">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriadi" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="parentid" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="urunsayisi" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="kategoriAciklama" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="ozelliks" Relationship="MvcProjemModel.FK_dbo_ozelliks_dbo_kategoris_kategoriid" FromRole="kategoris" ToRole="ozelliks" />
+    <NavigationProperty Name="uruns" Relationship="MvcProjemModel.FK_dbo_uruns_dbo_kategoris_kategoriid" FromRole="kategoris" ToRole="uruns" />
+  </EntityType>
+  <EntityType Name="ozelliks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="kategoriid" Type="Int32" Nullable="false" />
+    <Property Name="urunozellik_id" Type="Int32" />
+    <NavigationProperty Name="kategoris" Relationship="MvcProjemModel.FK_dbo_ozelliks_dbo_kategoris_kategoriid" FromRole="ozelliks" ToRole="kategoris" />
+    <NavigationProperty Name="urunozelliks" Relationship="MvcProjemModel.FK_dbo_ozelliks_dbo_urunozelliks_urunozellik_id" FromRole="ozelliks" ToRole="urunozelliks" />
+  </EntityType>
+  <EntityType Name="resimlers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="src" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="urnid" Type="Int32" />
+    <Property Name="iletisimler_id" Type="Int32" />
+    <Property Name="urun_id" Type="Int32" />
+    <NavigationProperty Name="iletisims" Relationship="MvcProjemModel.FK_dbo_resimlers_dbo_iletisims_iletisimler_id" FromRole="resimlers" ToRole="iletisims" />
+    <NavigationProperty Name="uruns" Relationship="MvcProjemModel.FK_dbo_resimlers_dbo_uruns_urun_id" FromRole="resimlers" ToRole="uruns" />
+  </EntityType>
+  <EntityType Name="urunozelliks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ozellikid" Type="Int32" Nullable="false" />
+    <Property Name="degeri" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="ozelliks" Relationship="MvcProjemModel.FK_dbo_ozelliks_dbo_urunozelliks_urunozellik_id" FromRole="urunozelliks" ToRole="ozelliks" />
+    <NavigationProperty Name="uruns" Relationship="MvcProjemModel.FK_dbo_uruns_dbo_urunozelliks_urunozellik_id" FromRole="urunozelliks" ToRole="uruns" />
+  </EntityType>
+  <EntityType Name="uruns">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="urunadi" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="tarih" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="kategoriid" Type="Int32" />
+    <Property Name="urunozellik_id" Type="Int32" />
+    <NavigationProperty Name="kategoris" Relationship="MvcProjemModel.FK_dbo_uruns_dbo_kategoris_kategoriid" FromRole="uruns" ToRole="kategoris" />
+    <NavigationProperty Name="resimlers" Relationship="MvcProjemModel.FK_dbo_resimlers_dbo_uruns_urun_id" FromRole="uruns" ToRole="resimlers" />
+    <NavigationProperty Name="urunozelliks" Relationship="MvcProjemModel.FK_dbo_uruns_dbo_urunozelliks_urunozellik_id" FromRole="uruns" ToRole="urunozelliks" />
+    <NavigationProperty Name="yorumlars" Relationship="MvcProjemModel.FK_dbo_yorumlars_dbo_uruns_urunid" FromRole="uruns" ToRole="yorumlars" />
+  </EntityType>
+  <EntityType Name="yetkis">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="yetkituru" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="yorumlars">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="yorum" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="tarih" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="urunid" Type="Int32" />
+    <NavigationProperty Name="uruns" Relationship="MvcProjemModel.FK_dbo_yorumlars_dbo_uruns_urunid" FromRole="yorumlars" ToRole="uruns" />
+  </EntityType>
+  <Association Name="FK_dbo_iletisims_dbo_iletisims_iletisimler_id">
+    <End Role="iletisims" Type="MvcProjemModel.iletisims" Multiplicity="0..1" />
+    <End Role="iletisims1" Type="MvcProjemModel.iletisims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="iletisims">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="iletisims1">
+        <PropertyRef Name="iletisimler_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_resimlers_dbo_iletisims_iletisimler_id">
+    <End Role="iletisims" Type="MvcProjemModel.iletisims" Multiplicity="0..1" />
+    <End Role="resimlers" Type="MvcProjemModel.resimlers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="iletisims">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="resimlers">
+        <PropertyRef Name="iletisimler_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ozelliks_dbo_kategoris_kategoriid">
+    <End Role="kategoris" Type="MvcProjemModel.kategoris" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ozelliks" Type="MvcProjemModel.ozelliks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategoris">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ozelliks">
+        <PropertyRef Name="kategoriid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_uruns_dbo_kategoris_kategoriid">
+    <End Role="kategoris" Type="MvcProjemModel.kategoris" Multiplicity="0..1" />
+    <End Role="uruns" Type="MvcProjemModel.uruns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategoris">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="uruns">
+        <PropertyRef Name="kategoriid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ozelliks_dbo_urunozelliks_urunozellik_id">
+    <End Role="urunozelliks" Type="MvcProjemModel.urunozelliks" Multiplicity="0..1" />
+    <End Role="ozelliks" Type="MvcProjemModel.ozelliks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urunozelliks">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ozelliks">
+        <PropertyRef Name="urunozellik_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_resimlers_dbo_uruns_urun_id">
+    <End Role="uruns" Type="MvcProjemModel.uruns" Multiplicity="0..1" />
+    <End Role="resimlers" Type="MvcProjemModel.resimlers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uruns">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="resimlers">
+        <PropertyRef Name="urun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_uruns_dbo_urunozelliks_urunozellik_id">
+    <End Role="urunozelliks" Type="MvcProjemModel.urunozelliks" Multiplicity="0..1" />
+    <End Role="uruns" Type="MvcProjemModel.uruns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urunozelliks">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="uruns">
+        <PropertyRef Name="urunozellik_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_yorumlars_dbo_uruns_urunid">
+    <End Role="uruns" Type="MvcProjemModel.uruns" Multiplicity="0..1" />
+    <End Role="yorumlars" Type="MvcProjemModel.yorumlars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uruns">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="yorumlars">
+        <PropertyRef Name="urunid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
