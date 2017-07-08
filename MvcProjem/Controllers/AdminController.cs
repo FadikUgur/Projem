@@ -28,16 +28,34 @@ namespace MvcProjem.Controllers
         {
             return View();
         }
+        
         [HttpGet]
         public void Add(string txtkadi)
         {
             VeriTabanı vt = new VeriTabanı();
-            //string id = txtkdi;
-            string adi = txtkadi;
-            kategori k = new kategori();
-            k.kategoriadi = adi;
-            vt.kategoriler.Add(k);
-            vt.SaveChanges();
+            if (txtkadi == null)
+            {
+                //mesajj ver
+            }
+            else
+            {
+                kategori k = new kategori();
+                //k.id = int.Parse("1") ;
+                k.kategoriadi = txtkadi;
+                vt.kategoriler.Add(k);
+                vt.SaveChanges();
+                
+            }
+            
+
+
+            //VeriTabanı vt = new VeriTabanı();
+            ////string id = txtkdi;
+            //string adi = txtkadi;
+            //kategori k = new kategori();
+            //k.kategoriadi = adi;
+            //vt.kategoriler.Add(k);
+            //vt.SaveChanges();
             
        //Makale yeni_makale = new Makale(); //Tablo örneğini aldık.
        //yeni_makale.baslik = "Hello World"; //TAblo alanlarını dolduruyoruz.

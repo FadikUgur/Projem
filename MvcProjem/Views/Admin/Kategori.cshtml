@@ -1,8 +1,14 @@
-﻿@{
+﻿@model IEnumerable<MvcProjem.Controllers.AdminController>
+
+@{
     ViewBag.Title = "Kategori";
     Layout = "~/Views/Admin/Index.cshtml";
 }
+<script type="text/javascript">
+    function Add() {
 
+}
+</script>
 
 <div class="container-fluid">
     <div class="row">
@@ -35,7 +41,7 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                        <button type="submit" class="btn btn-primary" onClick="Add()">Kaydet</button>
                     </div>
                 </div>
             </div>
