@@ -29,6 +29,7 @@ namespace MvcProjem.Controllers
             return View();
         }
         
+        
         [HttpGet]
         public void Add(string txtkadi)
         {
@@ -46,22 +47,34 @@ namespace MvcProjem.Controllers
                 vt.SaveChanges();
                 
             }
-            
-
-
-            //VeriTabanı vt = new VeriTabanı();
-            ////string id = txtkdi;
-            //string adi = txtkadi;
-            //kategori k = new kategori();
-            //k.kategoriadi = adi;
-            //vt.kategoriler.Add(k);
-            //vt.SaveChanges();
-            
-       //Makale yeni_makale = new Makale(); //Tablo örneğini aldık.
-       //yeni_makale.baslik = "Hello World"; //TAblo alanlarını dolduruyoruz.
-       //yeni_makale.icerik = "Lorem ipsum";
-       //db.Makale.Add(yeni_makale); Oluşturduğumuz model örneğinin Add Methodu ile yeni_makale isimli örneği Makale tablosuna ekliyoruz.
-       //db.SaveChanges(); //Yine modelin. SaveChanges() ( DeğişiklikleriKaydet ) Methodu ile değişiklikleri kaydediyoruz.
         }
+        [HttpGet]
+        public void Delete(string txtkadi)
+        {
+            VeriTabanı vt = new VeriTabanı();
+            if (txtkadi == null)
+            {
+                //mesajj ver
+            }
+            else
+            {
+                kategori k = new kategori();
+                var sil = vt.kategoriler.Where(sl => sl.kategoriadi == txtkadi).First();
+                vt.kategoriler.Remove(sil);
+                vt.SaveChanges();
+
+            }
+        }
+
+        //[HttpGet]
+        //public string list(string kadi)
+        //{
+        //    VeriTabanı vt = new VeriTabanı();
+        //    kategori k = new kategori();
+        //    var liste = from f in vt.kategoriler
+        //                select new { k.kategoriadi };
+        //    return liste.ToString();
+        //}
     }
 }
+

@@ -1,6 +1,4 @@
-﻿@model IEnumerable<MvcProjem.Controllers.AdminController>
-
-@{
+﻿@{
     ViewBag.Title = "Kategori";
     Layout = "~/Views/Admin/Index.cshtml";
 }
@@ -31,17 +29,15 @@
                         <input type="text" class="form-control" id="txtkadi" name="txtkadi">
                         <div class="form-group">
                             <label>Üst Kategori Seçiniz</label>
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" id="kadi" name="kadi" onclick="list()">
+                                <option></option>
                             </select>
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-primary" onClick="Add()">Kaydet</button>
+                        <button type="submit" id="btn1" class="btn btn-primary" onClick="Add()">Kaydet</button>
+                        <button type="submit" id="btn2" class="btn btn-primary" onClick="Delete()">Sil</button>
+
                     </div>
                 </div>
             </div>
