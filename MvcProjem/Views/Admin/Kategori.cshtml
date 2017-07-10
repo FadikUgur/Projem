@@ -2,10 +2,15 @@
     ViewBag.Title = "Kategori";
     Layout = "~/Views/Admin/Index.cshtml";
 }
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-    function Add() {
+    
 
-}
+    function Edit(id, name, parent) {
+        $("#kid").val(id);
+        $("#txtkadi").val(name);
+        $("#dtlParent").val(parent);
+    }
 </script>
 
 <div class="container-fluid">
@@ -15,37 +20,102 @@
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="col-lg-4">
-        </div>
+
         <!-- /.col-lg-4 -->
         <form action="/Admin/Add" method="get">
             <div class="col-lg-4">
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
+                        Kategori Ekle
                     </div>
                     <div class="panel-body">
                         <label>Kategori Adı</label>
+                        @Html.Hidden("kid", "0")
                         <input type="text" class="form-control" id="txtkadi" name="txtkadi">
                         <div class="form-group">
                             <label>Üst Kategori Seçiniz</label>
-                            <select class="form-control" id="kadi" name="kadi" onclick="list()">
-                                <option></option>
+                            <select class="form-control" id="dtlParent" name="dtlParent">
+                                @using (var context = new MvcProjem.Models.VeriTabanı())
+                                {
+                                    var query = from a in context.kategoriler select a;
+                                    <option value="0"></option>
+                                    foreach (var item in query)
+                                    {
+                                    <option value="@item.id">@item.kategoriadi</option>
+                                    }
+                                }
                             </select>
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" id="btn1" class="btn btn-primary" onClick="Add()">Kaydet</button>
-                        <button type="submit" id="btn2" class="btn btn-primary" onClick="Delete()">Sil</button>
-
+                        <button type="submit" id="btnsave" class="btn btn-primary">Kaydet</button>
                     </div>
                 </div>
             </div>
         </form>
         <!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Kategori Listesi
+                       
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Kategori Adı</th>
+                                    <th>Üst Kategori</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @using (var context = new MvcProjem.Models.VeriTabanı())
+                                {
+
+                                    var query = from a in context.kategoriler select a;
+                                    foreach (var item in query)
+                                    {
+                                    <tr>
+                                        <td>@item.id</td>
+                                        <td>@item.kategoriadi</td>
+                                        @using (var vt = new MvcProjem.Models.VeriTabanı())
+                                        {
+                                            var query2 = from a in vt.kategoriler where a.id == item.parentid select a;
+                                            var item2 = query2.FirstOrDefault();
+                                            if (item2 != null)
+                                            {
+                                            <td>@item2.kategoriadi</td>
+                                            }
+                                            else
+                                            {
+                                            <td></td>
+                                            }
+                                        }
+                                        <td style="text-align: center; width: 20%">
+                                            <button type="button" name="parentid" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Admin", new { id = item.id })'"><i class="fa fa-trash-o"></i></button>
+                                            <button type="submit" id="btnedit" class="btn btn-primary" style="margin-left:5px;" onclick="Edit('@item.id','@item.kategoriadi','@item.parentid');"><i class="fa fa-pencil"></i></button>
+                                        </td>
+                                    </tr>
+                                           
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
         </div>
         <!-- /.col-lg-4 -->
     </div>
 </div>
 <!-- /.container-fluid -->
+
+

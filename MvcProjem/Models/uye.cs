@@ -22,6 +22,7 @@ namespace MvcProjem
         public string Tc { get; set; }
 
         public virtual ICollection<iletisim> iletisimler { get; set; }
+       
 
     }
 }

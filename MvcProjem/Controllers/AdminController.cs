@@ -24,57 +24,47 @@ namespace MvcProjem.Controllers
         {
             return View();
         }
-        public ActionResult Yetki()
+        public ActionResult Uye_Onay()
         {
             return View();
         }
         
         
         [HttpGet]
-        public void Add(string txtkadi)
+        public ActionResult Add(string txtkadi, string dtlParent, string kid)
         {
             VeriTabanı vt = new VeriTabanı();
-            if (txtkadi == null)
-            {
-                //mesajj ver
-            }
-            else
-            {
+            if (kid == "0")
+            {//kategori kaydet
                 kategori k = new kategori();
                 //k.id = int.Parse("1") ;
                 k.kategoriadi = txtkadi;
+                k.parentid = Convert.ToInt32(dtlParent);
                 vt.kategoriler.Add(k);
                 vt.SaveChanges();
-                
-            }
-        }
-        [HttpGet]
-        public void Delete(string txtkadi)
-        {
-            VeriTabanı vt = new VeriTabanı();
-            if (txtkadi == null)
-            {
-                //mesajj ver
+
             }
             else
-            {
-                kategori k = new kategori();
-                var sil = vt.kategoriler.Where(sl => sl.kategoriadi == txtkadi).First();
-                vt.kategoriler.Remove(sil);
+            {//guncelle
+                Int32 id = Convert.ToInt32(kid);
+                kategori update = (from k in vt.kategoriler where k.id ==id select k).FirstOrDefault();
+                update.kategoriadi = txtkadi;
+                update.parentid = Convert.ToInt32(dtlParent);
                 vt.SaveChanges();
-
             }
+            return RedirectToAction("Kategori"); 
+        }
+        public ActionResult Delete(int id)
+        {
+            VeriTabanı vt = new VeriTabanı();
+
+            kategori sil = (from k in vt.kategoriler where k.id == id select k).FirstOrDefault();
+            vt.kategoriler.Remove(sil);
+            vt.SaveChanges();
+            return RedirectToAction("Kategori");
         }
 
-        //[HttpGet]
-        //public string list(string kadi)
-        //{
-        //    VeriTabanı vt = new VeriTabanı();
-        //    kategori k = new kategori();
-        //    var liste = from f in vt.kategoriler
-        //                select new { k.kategoriadi };
-        //    return liste.ToString();
-        //}
+       
     }
 }
 

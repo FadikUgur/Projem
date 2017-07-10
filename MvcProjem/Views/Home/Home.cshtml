@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +10,8 @@
     <meta name="author" content="">
 
     <title>Firma İsmi</title>
-    <!-- Bootstrap Core CSS -->
+
+   <!-- Bootstrap Core CSS -->
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
@@ -23,13 +23,14 @@
     <!-- Custom Fonts -->
     <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-   
+
 </head>
 
 <body>
@@ -49,25 +50,22 @@
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Kullanıcı Profili</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ayarlar</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Oturumu Kapat</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
+			<li>
+			<a href="#"><i class="fa  fa-home fa-fw"></i> Ana Sayfa</a>
+			</li>
+			<li>
+			<a href="#"><i class="fa fa-check fa-fw"></i> Siparişlerim</a>
+			</li>
+			<li>
+			<a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Sepetim</a>
+			</li>
+			<li>
+			<a href="#"><i class="fa fa-star fa-fw"></i> Favorilerim</a>
+			</li>
+			<li>
+			<a href="#"><i class="fa fa-users fa-fw"></i> Ürün</a>
+			</li>
+			</ul>
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -83,19 +81,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="@Url.Action("Yetki","Admin")"<i class="fa fa-pencil-square-o fa-fw"></i>Yetkiler</a>
-                            
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Kategori","Admin")"><i class="fa fa-list-ul fa-fw"></i> Kategoriler</a>
+                            <a href="#"><i class="fa fa-list-ul fa-fw"></i> Kategoriler<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="flot.html">Saat</a>
+                                </li>
+								
+                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="@Url.Action("Ozellik","Admin")"><i class="fa fa-cogs fa-fw"></i>Ürünlerin Genel Özellikleri</a>
-                        </li>
-						<li>
-                            <a href="@Url.Action("Yetki","Admin")"><i class="fa fa-check fa-fw"></i>Admin Kayıt</a>
-                        </li>
+                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -105,25 +100,34 @@
 
         <!-- Page Content -->
         <div id="page-wrapper">
-           @RenderBody()
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Blank</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="~/Content/js/jquery.min.js"></script>
+       <!-- jQuery -->
+  <script src="~/Content/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="~/Content/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="~/Content/js/metisMenu.min.js"></script>
+    <script src="~/Content/js/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="~/Content/js/sb-admin-2.js"></script>
-     
+
 </body>
 
 </html>

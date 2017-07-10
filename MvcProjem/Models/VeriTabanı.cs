@@ -27,6 +27,7 @@ namespace MvcProjem.Models
         public virtual DbSet<urun> urunler { get; set; }
         public virtual DbSet<urunozellik> urunozellik { get; set; }
         public virtual DbSet<yetki> yetkiler { get; set; }
+        public virtual DbSet<uye> uyeler { get; set; }
         public virtual DbSet<yorumlar> yorumlar { get; set; }
 
     }
