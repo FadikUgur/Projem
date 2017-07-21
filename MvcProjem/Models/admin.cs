@@ -5,6 +5,7 @@ using System.Data.Entity.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MvcProjem.Models;
 
 namespace MvcProjem
 {
@@ -20,5 +21,15 @@ namespace MvcProjem
         public string Tc { get; set; }
 
         //public virtual yetki yetki { get; set; }
+        
+        public void Add(admin a)
+        {
+            using (var vt = new VeriTabanı())
+            {
+               vt.adminler.Add(a);
+                vt.SaveChanges();
+               
+            }
+        }
     }
 }

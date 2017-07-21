@@ -103,8 +103,7 @@
                         </label>
                     </div>
                     <ul class="nav nav-second-level">
-                        <button type="button" id="btnlogin" onclick="Login();" class="btn btn-lg btn-success btn-block">Giriş Yap</button>
-                        <a href=@Url.Action("Kaydol", "Home") class="btn btn-lg btn-success btn-block">Kaydol</a>
+                        <button type="button" id="btnlogin" onclick="Giris();" class="btn btn-lg btn-success btn-block">Giriş Yap</button>
                     </ul>
                 </div>
             </div>
@@ -129,51 +128,37 @@
 
     <script src="~/Content/js/notify.min.js"></script>
 
-    <script type="text/javascript">
-        //function sleep(milliseconds) {
-            
-        //    var start = new Date().getTime();
-        //    for (var i = 0; i < 1e7; i++) {
-        //        if ((new Date().getTime() - start) > milliseconds) {
-        //            break;
-        //        }
-        //    }
-        //}
-        function Login() {
-            document.getElementById('giris').style.display = 'none';
-            document.getElementById('loading').style.display = 'block';
-            var uye = {
-                id: 0,
-                adi: "",
-                soyadi: "",
-                mail: $("#mail").val(),
-                sifre: $("#sifre").val(),
-                Tc: "",
-                status: 0
-            }
-            
-            $.getJSON("Home/Control", uye, function (data) {
+    <script type="text/javascript">   
+        function Giris() {
+                var admin = {
+                    id: 0,
+                    adi: "",
+                    soyadi:"",
+                    mail: $("#mail").val(),
+                    sifre: $("#sifre").val(),
+                    adres: "",
+                    tel: "",
+                    Tc: ""
 
-                $suc = false;
-                $i = 0;
-                $.each(data, function (key, val) {
-                    if (key == "success") {
-                        $suc = val;
-                    }
-                    else if (key == "message" && $suc == false) {
-                        $.notify(val, "warn");
-                        document.getElementById('giris').style.display = 'block';
-                        document.getElementById('loading').style.display = 'none';
-                    }
-                    else {// Yönlendirme İşlemi
+                }
+                $.getJSON("/Admin/GirisFnk", admin, function (data) {
 
-                        //$.notify(val, "success");
-                        //setTimeout(explode, 2000);
-                        $(location).prop('href', 'http://localhost:4684/Home/Home')
-                    }
+                    $suc = false;
+
+                    $.each(data, function (key, val) {
+                        if (key == "success") {
+                            $suc = val;
+                        }
+                        else if (key == "message" && $suc == false) {
+                            $.notify(val, "warn");
+
+                        }
+                        else {
+                            $(location).prop('href', 'http://localhost:4684/Admin/Kategori')
+                        }
+                    });
                 });
-            });
-        }
+            }         
     </script>
 </body>
 

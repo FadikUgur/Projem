@@ -9,9 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Firma İsmi</title>
+    <title>İhtiyacımVar.com</title>
 
-   <!-- Bootstrap Core CSS -->
+    <!-- Bootstrap Core CSS -->
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
@@ -46,26 +46,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Firma İsm</a>
+                <a class="navbar-brand" href="index.html">İhtiyacımVar.com</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
-			<li>
-			<a href="#"><i class="fa  fa-home fa-fw"></i> Ana Sayfa</a>
-			</li>
-			<li>
-			<a href="#"><i class="fa fa-check fa-fw"></i> Siparişlerim</a>
-			</li>
-			<li>
-			<a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Sepetim</a>
-			</li>
-			<li>
-			<a href="#"><i class="fa fa-star fa-fw"></i> Favorilerim</a>
-			</li>
-			<li>
-			<a href="#"><i class="fa fa-users fa-fw"></i> Ürün</a>
-			</li>
-			</ul>
+                <li>
+                    <a href="#"><i class="fa  fa-home fa-fw"></i>Ana Sayfa</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-check fa-fw"></i>Siparişlerim</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-shopping-cart fa-fw"></i>Sepetim</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-star fa-fw"></i>Favorilerim</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users fa-fw"></i>Ürün</a>
+                </li>
+                <li>
+                    <a href="http://localhost:4684/Home/Login">Giriş Yap/Kaydol</a>
+                </li>
+            </ul>
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -80,22 +83,36 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-list-ul fa-fw"></i> Kategoriler<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Saat</a>
-                                </li>
-								
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        
+                        @using (var context = new MvcProjem.Models.VeriTabanı())
+                        {
+
+                            var query = from a in context.kategoriler where a.parentid == null select a;
+                            foreach (var item in query)
+                            {
+                            <li>
+                                <a href="#">@item.kategoriadi<span class="fa arrow"></span></a>
+
+                                @using (var vt = new MvcProjem.Models.VeriTabanı())
+                                {
+                                    var query2 = from a in vt.kategoriler where a.parentid == item.id select a;
+                                    <ul class="nav nav-second-level">
+                                    @foreach (var item2 in query2)
+                                    {
+                                        <li>
+                                            <a href="#">@item2.kategoriadi</a>
+                                        </li>
+                                    }
+                                    </ul>
+                                    
+                                }
+                            </li>
+                                           
+                            }
+                        }
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.navbar-static-side -->
         </nav>
 
         <!-- Page Content -->
@@ -116,8 +133,8 @@
     </div>
     <!-- /#wrapper -->
 
-       <!-- jQuery -->
-  <script src="~/Content/jquery/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="~/Content/js/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="~/Content/js/bootstrap.min.js"></script>

@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Firma İsmi</title>
+    <title>İhtiyacımVar.com</title>
     <!-- Bootstrap Core CSS -->
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
 
@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Firma İsm</a>
+                <a class="navbar-brand" href="index.html">İhtiyacımVar.com</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -83,18 +83,23 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="@Url.Action("Yetki","Admin")"<i class="fa fa-pencil-square-o fa-fw"></i>Yetkiler</a>
-                            
-                        </li>
-                        <li>
                             <a href="@Url.Action("Kategori","Admin")"><i class="fa fa-list-ul fa-fw"></i> Kategoriler</a>
                             <!-- /.nav-second-level -->
                         </li>
+                        @if(MvcProjem.Controllers.Yetkiler.memberProcess){
+                        <li>
+                            <a href="@Url.Action("Onay","Admin")"><i class="fa fa-check fa-fw"></i> Üye Onay</a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        }
                         <li>
                             <a href="@Url.Action("Ozellik","Admin")"><i class="fa fa-cogs fa-fw"></i>Ürünlerin Genel Özellikleri</a>
                         </li>
 						<li>
-                            <a href="@Url.Action("Yetki","Admin")"><i class="fa fa-check fa-fw"></i>Admin Kayıt</a>
+                            <a href="@Url.Action("Admin_Kayit","Admin")"><i class="fa fa-user fa-fw"></i>Admin Kayıt/Onay</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Yetki","Admin")"><i class="fa fa-plus fa-fw"></i>Yetki Kayıt</a>
                         </li>
                     </ul>
                 </div>
@@ -123,7 +128,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="~/Content/js/sb-admin-2.js"></script>
-     
+    
 </body>
 
 </html>

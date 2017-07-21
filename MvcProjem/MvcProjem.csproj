@@ -114,6 +114,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdentityMessage.cs" />
+    <Compile Include="Controllers\IIdentityMessageService.cs" />
+    <Compile Include="Controllers\SendGridMessage.cs" />
+    <Compile Include="Controllers\Yetkiler.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\admin.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -143,6 +147,7 @@
     <Content Include="Content\css\fileinput.min.css" />
     <Content Include="Content\css\metisMenu.min.css" />
     <Content Include="Content\css\morris.css" />
+    <Content Include="Content\css\onay.png" />
     <Content Include="Content\css\sb-admin-2.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
@@ -193,6 +198,8 @@
     <Content Include="Content\js\metisMenu.min.js" />
     <Content Include="Content\js\morris-data.js" />
     <Content Include="Content\js\morris.min.js" />
+    <Content Include="Content\js\notify.js" />
+    <Content Include="Content\js\notify.min.js" />
     <Content Include="Content\js\plugins\piexif.js" />
     <Content Include="Content\js\plugins\piexif.min.js" />
     <Content Include="Content\js\plugins\purify.js" />
@@ -201,6 +208,7 @@
     <Content Include="Content\js\plugins\sortable.min.js" />
     <Content Include="Content\js\raphael.min.js" />
     <Content Include="Content\js\sb-admin-2.js" />
+    <Content Include="Content\loading.gif" />
     <Content Include="Content\themes\explorer-fa\theme.css" />
     <Content Include="Content\themes\explorer-fa\theme.js" />
     <Content Include="Content\themes\explorer-fa\theme.min.css" />
@@ -214,6 +222,8 @@
     <Content Include="Content\themes\gly\theme.js" />
     <Content Include="Content\themes\gly\theme.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="mail.xml" />
+    <Content Include="resim.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -291,6 +301,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Home.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Onay.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Admin_Kayit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Giris.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Engelli.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

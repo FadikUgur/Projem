@@ -10,6 +10,8 @@ namespace MvcProjem
 {
     public class uye
     {
+        public enum statusState { Pasif = 1, Aktif= 2 , Engelli =3}
+
         public uye()
         {
             this.iletisimler = new HashSet<iletisim>();
@@ -20,7 +22,7 @@ namespace MvcProjem
         public string mail { get; set; }
         public string sifre { get; set; }
         public string Tc { get; set; }
-
+        public int status { get; set; }
         public virtual ICollection<iletisim> iletisimler { get; set; }
        
 

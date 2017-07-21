@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Onay";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+       
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Üye Listesi
+                       
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Adı</th>
+                                        <th>Soyadı</th>
+                                        <th>Mail Adresi</th>
+                                        <th>Statüsü</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @using (var context = new MvcProjem.Models.VeriTabanı())
+                                    {
+
+                                        var query = from a in context.uyeler select a;
+                                        foreach (var item in query)
+                                        {
+                                        <tr>
+                                            <td>@item.id</td>
+                                            <td>@item.adi</td>
+                                            <td>@item.soyadi</td>
+                                            <td>@item.mail</td>
+                                            <td>@item.status</td>
+
+
+                                            <td style="text-align: center; width: 20%">
+                                                @if(MvcProjem.Controllers.Yetkiler.memberBlocked){
+                                                    <button type="submit"  class="btn btn-primary" style="margin-left:5px;" onclick="location.href='@Url.Action("Bloke", "Admin", new { id = item.id })'"><i class="fa fa-ban"></i></button>
+                                                }
+                                            </td>
+                                        </tr>
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+       
+        <!-- /.col-lg-4 -->
+    </div>
+</div>
+<!-- /.container-fluid -->
