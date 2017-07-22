@@ -30,7 +30,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -69,12 +68,13 @@
                     <a href="http://localhost:4684/Home/Login">Giriş Yap/Kaydol</a>
                 </li>
             </ul>
+
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Ara...">
+                                <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
@@ -83,32 +83,8 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        @using (var context = new MvcProjem.Models.VeriTabanı())
-                        {
-
-                            var query = from a in context.kategoriler where a.parentid == null select a;
-                            foreach (var item in query)
-                            {
-                            <li>
-                                <a href="#">@item.kategoriadi<span class="fa arrow"></span></a>
-
-                                @using (var vt = new MvcProjem.Models.VeriTabanı())
-                                {
-                                    var query2 = from a in vt.kategoriler where a.parentid == item.id select a;
-                                    <ul class="nav nav-second-level">
-                                    @foreach (var item2 in query2)
-                                    {
-                                        <li>
-                                            <a href="#">@item2.kategoriadi</a>
-                                        </li>
-                                    }
-                                    </ul>
-                                    
-                                }
-                            </li>
-                                           
-                            }
-                        }
+                        <ul id="menu">
+                        </ul>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -132,6 +108,7 @@
 
     </div>
     <!-- /#wrapper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- jQuery -->
     <script src="~/Content/js/jquery.min.js"></script>
@@ -144,6 +121,25 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="~/Content/js/sb-admin-2.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            
+
+            $.getJSON("/Home/Menu", function (data) {
+
+                alert(data);
+
+
+
+            });
+
+
+
+        });
+
+    </script>
 
 </body>
 

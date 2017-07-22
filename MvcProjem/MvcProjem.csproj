@@ -223,7 +223,6 @@
     <Content Include="Content\themes\gly\theme.min.js" />
     <Content Include="Global.asax" />
     <Content Include="mail.xml" />
-    <Content Include="resim.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

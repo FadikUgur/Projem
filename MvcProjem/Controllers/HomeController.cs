@@ -9,6 +9,9 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Net.Mail;
 using System.Net;
+using System.Web.UI.WebControls;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace MvcProjem.Controllers
 {
@@ -141,5 +144,54 @@ namespace MvcProjem.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        
+        public JsonResult Menu()
+        {
+            GetTree(0);
+            return Json(result, JsonRequestBehavior.AllowGet);
+            
+        }
+        JObject result = new JObject();
+        private void GetTree(int parentId)
+        {
+            List<kategori> list = new List<kategori>();
+            IQueryable<kategori> query = null;
+            using (var vt = new VeriTabanı())
+            {
+                if (parentId == 0)
+                    query = from k in vt.kategoriler where k.parentid == null select k;
+                else
+                    query = from k in vt.kategoriler where k.parentid == parentId select k;
+                
+                if (query == null)
+                    return;
+                else if (query.Count() == 0)
+                    return;
+                
+                foreach (var item in query)
+                {
+
+
+                    if (parentId != 0)
+                    {
+                       
+                        
+                    }
+                    else
+                    {
+                        result.Add(item.id.ToString(), item.kategoriadi);
+                    }
+
+
+                }
+
+
+                
+            }
+        }
+
+
+       
+        
     }
 }

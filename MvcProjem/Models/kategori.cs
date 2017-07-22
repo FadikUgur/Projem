@@ -5,13 +5,18 @@ using System.Data.Entity.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json.Linq;
 
 namespace MvcProjem
 {
     public class kategori
     {
+
         public kategori()
         {
+          
+            //kategoriadi = (string)jUser["kategoriadi"];
+            //parentid = (int)jUser["parentid"];
             this.urunler = new HashSet<urun>();
             this.ozellik = new HashSet<ozellik>();
         }
