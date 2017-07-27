@@ -45,7 +45,6 @@ namespace MvcProjem.Controllers
             }
             return RedirectToAction("Login", "Home");
         }
-        
 
         [HttpGet]
         public ActionResult Add(string adi, string soyadi, string mail,string sifre , string kno)
@@ -147,12 +146,49 @@ namespace MvcProjem.Controllers
         
         public JsonResult Menu()
         {
-            GetTree(0);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            
+            JArray array = new JArray();
+            array = GetTree(0);
+            return Json(array.ToString(), JsonRequestBehavior.AllowGet);
+            /*GetTree(0, null);
+            return Json(treeview1, JsonRequestBehavior.AllowGet);*/
             
         }
-        JObject result = new JObject();
-        private void GetTree(int parentId)
+
+        private JArray GetTree(int parentId)
+        {
+            JArray array = new JArray();
+            List<kategori> list = new List<kategori>();
+            IQueryable<kategori> query = null;
+            JObject result = new JObject();
+            using (var vt = new VeriTabanı())
+            {
+                if (parentId == 0)
+                    query = from k in vt.kategoriler where k.parentid == null || k.parentid==0 select k;
+                else
+                    query = from k in vt.kategoriler where k.parentid == parentId select k;
+
+                if (query == null)
+                    return null;
+                else if (query.Count() == 0)
+                    return null;
+
+                foreach (var item in query)
+                {
+                    result = new JObject();
+                    result.Add("text", item.kategoriadi);
+                    
+                    var nodes=GetTree(item.id);
+                    if(nodes!=null)
+                        result.Add("nodes",nodes );
+                    array.Add(result);
+                }
+            }
+            return array;
+        }
+
+
+        /*private void GetTree(int parentId, TreeNode parentNode)
         {
             List<kategori> list = new List<kategori>();
             IQueryable<kategori> query = null;
@@ -162,36 +198,27 @@ namespace MvcProjem.Controllers
                     query = from k in vt.kategoriler where k.parentid == null select k;
                 else
                     query = from k in vt.kategoriler where k.parentid == parentId select k;
-                
+
                 if (query == null)
                     return;
                 else if (query.Count() == 0)
                     return;
-                
+
                 foreach (var item in query)
                 {
-
-
-                    if (parentId != 0)
+                    TreeNode node = new TreeNode("kategoriAdi", item.kategoriadi);
+                    if (parentNode != null)
                     {
-                       
-                        
+                        parentNode.ChildNodes.Add(node);
+                        GetTree(item.id, node);
                     }
                     else
                     {
-                        result.Add(item.id.ToString(), item.kategoriadi);
+                        treeview1.Nodes.Add(node);
+                        GetTree(item.id, node);
                     }
-
-
                 }
-
-
-                
             }
-        }
-
-
-       
-        
+        }*/
     }
 }

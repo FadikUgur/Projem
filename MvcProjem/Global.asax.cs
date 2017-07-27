@@ -78,9 +78,17 @@ namespace MvcProjem
                         else
                             Response.Redirect("http://localhost:4684/Admin/Engelli");
                     }
+                    else
+                    {
+                        return;
+                    }
 
                 }
-            }
+                else if (url.IndexOf("GirisFnk")>0)
+                    return;
+                else
+                    Response.Redirect("http://localhost:4684/Admin/Giris");
+           }
         }
     }
 }

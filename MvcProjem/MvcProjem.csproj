@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Models\iletisim.cs" />
     <Compile Include="Models\kategori.cs" />
+    <Compile Include="Models\k_ozellik.cs" />
     <Compile Include="Models\ozellik.cs" />
     <Compile Include="Models\VeriTabanı.cs" />
     <Compile Include="Models\yetki.cs" />
@@ -221,7 +222,15 @@
     <Content Include="Content\themes\fa\theme.min.js" />
     <Content Include="Content\themes\gly\theme.js" />
     <Content Include="Content\themes\gly\theme.min.js" />
+    <Content Include="Content\treeview\bootstrap-treeview.css" />
+    <Content Include="Content\treeview\bootstrap-treeview.js" />
     <Content Include="Global.asax" />
+    <Content Include="lib\blanket.min.js" />
+    <Content Include="lib\bootstrap-treeview.css" />
+    <Content Include="lib\bootstrap-treeview.js" />
+    <Content Include="lib\jquery.js" />
+    <Content Include="lib\qunit-1.12.0.css" />
+    <Content Include="lib\qunit-1.12.0.js" />
     <Content Include="mail.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -312,6 +321,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Engelli.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Ilan_Ver.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

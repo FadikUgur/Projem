@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using MvcProjem.Models;
 using System.Net;
 using System.Net.Mail;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+
 
 namespace MvcProjem.Controllers
 {
@@ -36,10 +39,14 @@ namespace MvcProjem.Controllers
         }
         public ActionResult Giris()
         {
-            Session["giris"] = "evet";
+            //Session["giris"] = "evet";
             return View();
         }
         public ActionResult Engelli()
+        {
+            return View();
+        }
+        public ActionResult Ilan_Ver()
         {
             return View();
         }
@@ -106,7 +113,7 @@ namespace MvcProjem.Controllers
         //}
         public JsonResult Admin_Add(admin admin)
         {
-            Result result = new Result();
+            Result<Object> result = new Result<Object>();
             try
             {
                 admin a = admin;
@@ -120,14 +127,15 @@ namespace MvcProjem.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        public class Result
+        public class Result<K>
         {
             public bool success;
             public string message;
+            public List<K> objectList;
         }
         public JsonResult AddYetki(yetki yetki)
         {
-            Result result = new Result();
+            Result<Object> result = new Result<Object>();
             try
             {
                 using (var vt = new MvcProjem.Models.VeriTabanı())
@@ -151,11 +159,10 @@ namespace MvcProjem.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        [HttpGet]
         public JsonResult GirisFnk(admin admin)
         {
-            Session["Admin"] = admin.mail;
-            Result result = new Result();
+            
+            Result<Object> result = new Result<Object>();
             using (var vt = new VeriTabanı())
             {
                 var query = from a in vt.adminler where a.mail == admin.mail select a;
@@ -173,6 +180,7 @@ namespace MvcProjem.Controllers
                 }
                 else
                 {
+                    Session["Admin"] = admin.mail;
                     result.success = true;
                     result.message = "Oturum açma işlemi başarı ile tamamlandı.";
                 }
@@ -180,5 +188,54 @@ namespace MvcProjem.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-    }
+        public JsonResult Ozellik_Add(int id,string name,string catIds)
+        {
+            Result<Object> result = new Result<Object>();
+            try
+            {
+                using (var vt = new VeriTabanı())
+                {
+                    ozellik oz = new ozellik();
+                    k_ozellik k_oz = new k_ozellik();
+                    string[] cats = catIds.Split(',');
+                    oz = new ozellik();
+                    oz.name = name;
+                    vt.ozellikler.Add(oz);
+                    vt.SaveChanges();
+                    for (int i = 0; i < cats.Length - 1; i++)
+                    {
+                        k_oz.kategoriid = Convert.ToInt32(cats[i]);
+                        k_oz.ozellikid = oz.id;
+                        vt.k_ozellik.Add(k_oz);
+                        vt.SaveChanges();
+                    }
+                    result.success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.success = false;
+                result.message = "Bir hata oluştu:" + ex.Message;
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Ozellik_List(int CatID)
+        {
+            Result<ozellik> result = new Result<ozellik>();
+            List<ozellik> list = new List<ozellik>();
+            using (var vt = new MvcProjem.Models.VeriTabanı())
+            {
+                var query = from o in vt.ozellikler join k in vt.k_ozellik on o.id equals k.ozellikid where k.kategoriid==CatID select o;
+
+                foreach (var item in query) {
+                    list.Add(item);
+                }
+                result.success = true;
+                result.message = "";
+                result.objectList = list;
+                return Json(result, JsonRequestBehavior.AllowGet);
+               
+            }
+        }
+     }
 }

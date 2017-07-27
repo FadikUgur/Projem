@@ -71,6 +71,7 @@
 </head>
 
 <body>
+    <form id="enter" onkeypress="if (event.keyCode == 13) {Giris()}" >
     <div class="row">
         <div class="col-md-4 col-md-offset-4" id="loading" style="display: none;">
             <img src="~/Content/loading.gif" />
@@ -83,6 +84,7 @@
             </div>
         </div>
     </div>
+   
     <div class="row">
         <div class="col-md-4 col-md-offset-4" id="giris" style="display: block;">
             <div class="login-panel panel panel-default">
@@ -109,6 +111,7 @@
             </div>
         </div>
     </div>
+    </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- jQuery -->
@@ -130,6 +133,7 @@
 
     <script type="text/javascript">   
         function Giris() {
+            
                 var admin = {
                     id: 0,
                     adi: "",
@@ -141,6 +145,7 @@
                     Tc: ""
 
                 }
+                
                 $.getJSON("/Admin/GirisFnk", admin, function (data) {
 
                     $suc = false;
@@ -151,13 +156,14 @@
                         }
                         else if (key == "message" && $suc == false) {
                             $.notify(val, "warn");
-
+                            $(location).prop('href', 'http://localhost:4684/Admin/Giris')
                         }
                         else {
                             $(location).prop('href', 'http://localhost:4684/Admin/Kategori')
                         }
                     });
                 });
+                
             }         
     </script>
 </body>

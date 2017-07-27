@@ -18,6 +18,7 @@ namespace MvcProjem
         public int id { get; set; }
         public int ozellikid { get; set; }
         public string degeri { get; set; }
+        public int urunid { get; set; }
 
         public virtual ICollection<urun> urunler { get; set; }
         public virtual ICollection<ozellik> ozellik { get; set; }
