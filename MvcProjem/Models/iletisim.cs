@@ -17,7 +17,5 @@ namespace MvcProjem
         public string ulke { get; set; }
         public string sehir { get; set; }
         public string ilce { get; set; }
-
-        public virtual iletisim iletisimler { get; set; }
     }
 }

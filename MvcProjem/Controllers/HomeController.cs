@@ -32,6 +32,10 @@ namespace MvcProjem.Controllers
         {
             return View();
         }
+        public ActionResult UrunList()
+        {
+            return View();
+        }
         public ActionResult U_Onay()
         {
             var id = Convert.ToInt32(Request["id"]);

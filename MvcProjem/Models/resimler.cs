@@ -12,8 +12,7 @@ namespace MvcProjem
     {
         public int id { get; set; }
         public string src { get; set; }
-        public Nullable<int> urnid { get; set; }
+        public int urunid { get; set; }
 
-        public virtual iletisim iletisimler { get; set; }
     }
 }

@@ -43,6 +43,6 @@ C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.Razor.xml
 C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.xml
 C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\bin\System.Web.WebPages.Razor.xml
-C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\obj\Debug\MvcProjem.csprojResolveAssemblyReference.cache
 C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\obj\Debug\MvcProjem.dll
 C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\obj\Debug\MvcProjem.pdb
+C:\Users\Satellite\Documents\GitHub\Projem\MvcProjem\obj\Debug\MvcProjem.csprojResolveAssemblyReference.cache

@@ -150,6 +150,11 @@
     <Content Include="Content\css\morris.css" />
     <Content Include="Content\css\onay.png" />
     <Content Include="Content\css\sb-admin-2.css" />
+    <Content Include="Content\fileinput\es.js" />
+    <Content Include="Content\fileinput\fileinput.js" />
+    <Content Include="Content\fileinput\fr.js" />
+    <Content Include="Content\fileinput\sortable.js" />
+    <Content Include="Content\fileinput\tr.js" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -245,6 +250,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Resimler\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -324,6 +330,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Ilan_Ver.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\UrunList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,10 +12,6 @@ namespace MvcProjem
     {
         public enum statusState { Pasif = 1, Aktif= 2 , Engelli =3}
 
-        public uye()
-        {
-            this.iletisimler = new HashSet<iletisim>();
-        }
         public int id { get; set; }
         public string adi { get; set; }
         public string soyadi { get; set; }
@@ -23,8 +19,5 @@ namespace MvcProjem
         public string sifre { get; set; }
         public string Tc { get; set; }
         public int status { get; set; }
-        public virtual ICollection<iletisim> iletisimler { get; set; }
-       
-
     }
 }

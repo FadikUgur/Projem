@@ -55,6 +55,7 @@ namespace MvcProjem
             {
                 if (url == "http://localhost:4684/Admin/Giris")
                     return;
+                
                 else if (Session["Admin"] != null)
                 {
                     using (var vt = new VeriTabanı())
@@ -84,7 +85,7 @@ namespace MvcProjem
                     }
 
                 }
-                else if (url.IndexOf("GirisFnk")>0)
+                else if (url.IndexOf("GirisFnk") > 0)
                     return;
                 else
                     Response.Redirect("http://localhost:4684/Admin/Giris");

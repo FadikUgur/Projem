@@ -12,7 +12,5 @@ namespace MvcProjem
     {
         public int id { get; set; }
         public string name { get; set; }
-
-        public virtual urunozellik urunozellik { get; set; }
     }
 }

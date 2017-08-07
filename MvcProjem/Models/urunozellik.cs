@@ -10,18 +10,9 @@ namespace MvcProjem
 {
     public class urunozellik
     {
-        public urunozellik()
-        {
-            this.urunler = new HashSet<urun>();
-            this.ozellik = new HashSet<ozellik>();
-        }
         public int id { get; set; }
-        public int ozellikid { get; set; }
-        public string degeri { get; set; }
+        public int k_ozellikid { get; set; }
+        public string value { get; set; }
         public int urunid { get; set; }
-
-        public virtual ICollection<urun> urunler { get; set; }
-        public virtual ICollection<ozellik> ozellik { get; set; }
-
     }
 }

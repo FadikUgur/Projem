@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Mail;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.IO;
 
 
 namespace MvcProjem.Controllers
@@ -46,10 +47,17 @@ namespace MvcProjem.Controllers
         {
             return View();
         }
-        public ActionResult Ilan_Ver()
+        public ActionResult Ilan_Ver(Int32 id)
         {
+            if (id != 0)
+            {
+                ViewBag.Id = "" + id;
+            }
+            else
+                ViewBag.Id = null;
             return View();
         }
+       
         public enum status
         {
             Onay,
@@ -140,16 +148,16 @@ namespace MvcProjem.Controllers
             {
                 using (var vt = new MvcProjem.Models.VeriTabanı())
                 {
-                 var query = from a in vt.yetkiler where a.adminId == yetki.adminId select a;
-                 var sil = query.FirstOrDefault();
-                 if (sil != null)
-                 {
-                     vt.yetkiler.Remove(sil);
-                     vt.SaveChanges();
-                 }
-                 yetki y = yetki;
-                     yetki.Add(y);
-                     result.success = true;
+                    var query = from a in vt.yetkiler where a.adminId == yetki.adminId select a;
+                    var sil = query.FirstOrDefault();
+                    if (sil != null)
+                    {
+                        vt.yetkiler.Remove(sil);
+                        vt.SaveChanges();
+                    }
+                    yetki y = yetki;
+                    yetki.Add(y);
+                    result.success = true;
                 }
             }
             catch (Exception ex)
@@ -161,7 +169,7 @@ namespace MvcProjem.Controllers
         }
         public JsonResult GirisFnk(admin admin)
         {
-            
+
             Result<Object> result = new Result<Object>();
             using (var vt = new VeriTabanı())
             {
@@ -188,7 +196,7 @@ namespace MvcProjem.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Ozellik_Add(int id,string name,string catIds)
+        public JsonResult Ozellik_Add(int id, string name, string catIds)
         {
             Result<Object> result = new Result<Object>();
             try
@@ -225,17 +233,97 @@ namespace MvcProjem.Controllers
             List<ozellik> list = new List<ozellik>();
             using (var vt = new MvcProjem.Models.VeriTabanı())
             {
-                var query = from o in vt.ozellikler join k in vt.k_ozellik on o.id equals k.ozellikid where k.kategoriid==CatID select o;
+                var query = from o in vt.ozellikler join k in vt.k_ozellik on o.id equals k.ozellikid where k.kategoriid == CatID select o;
 
-                foreach (var item in query) {
+                foreach (var item in query)
+                {
                     list.Add(item);
                 }
                 result.success = true;
                 result.message = "";
                 result.objectList = list;
                 return Json(result, JsonRequestBehavior.AllowGet);
-               
+
             }
         }
-     }
+        public JsonResult Urun_Add(string urunadi, string aciklama, string tarih, int kategoriid, string degeri, string ozellikid, string value)
+        {
+            Result<urun> result = new Result<urun>();
+            try
+            {
+               using (var vt =new VeriTabanı())
+               {
+                   urun u = new urun();
+                   u.urunadi=urunadi;
+                   u.aciklama=aciklama;
+                   u.tarih=tarih;
+                   u.kategoriid=kategoriid;
+                   u.degeri=degeri;
+                   vt.urunler.Add(u);
+                   vt.SaveChanges();
+
+                   string[] oIds = ozellikid.Split(',');
+                   string[] vals = value.Split(',');
+                   for (int i = 0; i < oIds.Length - 1; i++)
+                   {
+                       urunozellik uo = new urunozellik()
+                       {
+                           k_ozellikid = Convert.ToInt32(oIds[i]),
+                           urunid = u.id,
+                           value = vals[i]
+                       };
+                       vt.urunozellik.Add(uo);
+                       vt.SaveChanges();
+                   }
+
+                   result.success = true;
+                   result.message = "";
+                   result.objectList = new List<urun>();
+                   result.objectList.Add(u);
+               }
+            }
+            catch (Exception ex)
+            {
+                result.success = false;
+                result.message = "Bir hata oluştu:" + ex.Message;
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        
+        public JsonResult FileUpload(int id)
+        {
+            Result<Object> result = new Result<object>();
+            string path = Server.MapPath("/Resimler/" + id + "/");
+            Directory.CreateDirectory(path);
+            var httpRequest = System.Web.HttpContext.Current.Request;
+            HttpFileCollection uploadFiles = httpRequest.Files;
+
+            if (httpRequest.Files.Count > 0)
+            {
+                int i;
+                for (i = 0; i < uploadFiles.Count; i++)
+                {
+                    HttpPostedFile postedFile = uploadFiles[i];
+                    var filePath = path + postedFile.FileName;
+                    postedFile.SaveAs(filePath);
+
+                    string yol = "../.." + "/Resimler/" + id + "/" + postedFile.FileName;
+                    resimler resim = new resimler();
+                    resim.id = id;
+                    resim.src = yol;
+                    resim.urunid = id;
+                    vt.resimler.Add(resim);
+                    vt.SaveChanges();
+
+                }
+               
+            }
+
+
+          
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        
+    }
 }

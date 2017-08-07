@@ -56,10 +56,10 @@
 
     }
     function Del() {
-        if (x == null)
-        {
-            $.notify("Listeden kaldırmak istediğiniz kategoriyi seçiniz !!", "warn");
-        }
+        //if (x == null)
+        //{
+        //    $.notify("Listeden kaldırmak istediğiniz kategoriyi seçiniz !!", "warn");
+        //}
         var x = document.getElementById("lstCategories");
             x.remove(x.selectedIndex);
     }
@@ -168,7 +168,5 @@
     </div>
 
 </div>
-
- <script src="~/Content/js/notify.js"></script>
-
-    <script src="~/Content/js/notify.min.js"></script>
+<script src="~/Content/js/notify.js"></script>
+<script src="~/Content/js/notify.min.js"></script>
